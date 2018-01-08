@@ -10,30 +10,8 @@ import expressWinston from 'express-winston';
 import path from 'path';
 import history from 'connect-history-api-fallback';
 import Statistic from './middlewares/statistic'
-import swaggerJSDoc from "swagger-jsdoc";
 
 const app = express();
-
-// swagger definition
-const swaggerDefinition = {
-    info: {
-        title: 'Node Swagger API',
-        version: '1.0.1',
-        description: 'Demonstrating how to desribe a RESTful API with Swagger',
-    },
-    host: 'localhost:3000',
-    basePath: '/',
-};
-// options for the swagger docs
-const options = {
-    // import swaggerDefinitions
-    swaggerDefinition: swaggerDefinition,
-    // path to the API docs
-    apis: ['./routes/*.js'],
-};
-
-// initialize swagger-jsdoc
-const swaggerSpec = swaggerJSDoc(options);
 
 app.all('*', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", req.headers.origin || '*');
